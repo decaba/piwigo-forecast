@@ -14,7 +14,7 @@ This is a fork of the [Piwigo-forecast](http://piwigo.org/ext/extension_view.php
 ### Instructions for taking advantage of this plugin's ability to use buffer.php to cache API requests to forecast.io
 
 1. Download [buffer.php](https://github.com/leo/buffer/blob/master/buffer.php) to the root of your piwigo directory.
-2. Per [buffer's instructions](https://github.com/leo/buffer/blob/master/README.md), make sure the 'buffer.php' is included in your script and theres a folder called "cache" next to buffer's PHP-file.
+2. Per [buffer's instructions](https://github.com/leo/buffer/blob/master/README.md), make sure the 'buffer.php' is included in your script and there's a folder called "cache" next to buffer's PHP-file. I put both in the root of my piwigo directory.
 3. Adjust your web server's permissions so that buffer.php can write files to the cache directory.
 4. Edit [piwigo_directory]/plugins/forecast/lib/forecast.io.php, find the section about buffer (around line 108), and uncomment the line that follows `// all good`. Optionally, change `$content = $cache->data($request_url);` to something like `$content = $cache->data($request_url, 300, 'cache');`.
 5. Make sure buffer is initialized by adding to main.inc.php the following: `include_once(PHPWG_ROOT_PATH.'/buffer.php');`
