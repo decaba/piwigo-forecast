@@ -228,7 +228,7 @@ function parseCondition($condition) {
 	// Round Temperature and add degrees
 	if (preg_match("/^temperature/", $key)) { $condition->$key = round($value, 0).'°'; }
 	// Convert temperature timestamp value to an human readable value
-	if (preg_match("/^temperature.*Time$/", $key)) { $condition->$key = date('G', $value); }
+	if (preg_match("/^temperature.*Time$/", $key)) { $condition->$key = date('g a', $value); }
 	// Convert Sun timestamp value to an human readable value
 	if (preg_match("/^sun.*Time$/", $key)) { $condition->$key = date('G:i', $value); }
 	if (preg_match("/^windSpeed/", $key))
@@ -255,6 +255,8 @@ function parseCondition($condition) {
 		}
 	}
 	if (preg_match("/^time$/", $key)) { $condition->$key = date('l j F Y', $value); }
+  if (preg_match("/^sunriseTime$/", $key)) { $condition->$key = date('g:i a', $value); }
+  if (preg_match("/^sunsetTime$/", $key)) { $condition->$key = date('g:i a', $value); }
     }
     return $condition;
 }
