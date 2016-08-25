@@ -242,7 +242,7 @@ function parseCondition($condition) {
 	if (preg_match("/^dewPoint/", $key)) { $condition->$key = round($value, 0); }
 	if (preg_match("/^visibility/", $key))
 	{
-		if ($condition->units == "us") { $condition->$key = round($value, 0).'mi'; }
+		if ($condition->units == "us") { $condition->$key = round($value, 0).' mi'; }
 		else { $condition->$key = round($value, 0).' km'; }
 	}
 	// Convert WindBearing to an human readable value
